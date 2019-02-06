@@ -4,25 +4,18 @@
 # December 8th 2017
 # Term Project - Analyzing a Large Dataset on Internet Searches
 
-# Date and Time Functions
-# as.POSIXct()
-# as.POSIXlt()
-# strptime()
-
 # Import the dataset
 eLog <- read.csv("~/Google Drive/Fall 2017/STAT196/Term Project/Discovery-Hiring-Analyst-2016-master/events_log.csv")
+ 
+# 1) What is our daily overall clickthrough rate? How does it vary between the groups?
 
-# Use RMarkdown to re-run your source code with the dataset in the same directory and obtain the same results and figures. 
-# Task - Create a reproducible report* answering the following questions:
-
-# 1 - What is our daily overall clickthrough rate? How does it vary between the groups?
 # index and convert timestamp format into days in 1 - 8 
+
 # round(timestamp/1000000) eliminates the HHMMSS from timestamp (YYYYMMDDHHMMSS)
 # %% 10 eliminates the YYYYMM from timestamp (YYYYMM) leaving DD
 total.days.index = round(eLog$timestamp/1000000, 0) %% 10 
-
 overall.clickthrough.rate = eLog$action=="visitPage"
-sum(overall.clickthrough.rate==T) 
+cat("Total Sample Size : ", sum(overall.clickthrough.rate==T)) 
 
 #  Split into group a / group b 
 # Index and convert timestamp format into days 1 - 8 for group a
